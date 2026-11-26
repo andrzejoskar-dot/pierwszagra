@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kolorowe odbicie</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <h1>Kolorowe odbicie</h1>
+      <div class="game-info" aria-live="polite">
+        <span>Punkty: <strong id="score">0</strong></span>
+        <span>Szanse: <strong id="lives">3</strong></span>
+        <span>Poziom: <strong id="level">1</strong></span>
+      </div>
+      <canvas id="game" width="800" height="600" aria-label="Plansza gry"></canvas>
+      <button id="startButton" type="button">Menu</button>
+      <p class="controls">Sterowanie: strzałki ← → albo A i D</p>
+    </main>
+
+    <dialog id="menuDialog">
+      <section class="menu-content">
+        <h2>Menu gry</h2>
+        <button id="newGameButton" type="button">Nowa gra</button>
+        <button id="chooseLevelButton" type="button" class="secondary-button">Wybierz level</button>
+        <button id="menuScoresButton" type="button" class="secondary-button">Tabela wyników</button>
+      </section>
+    </dialog>
+
+    <dialog id="levelDialog">
+      <section class="menu-content">
+        <h2>Wybierz level</h2>
+        <div class="level-options">
+          <button type="button" data-level="1">Level 1</button>
+          <button type="button" data-level="2">Level 2</button>
+          <button type="button" data-level="3">Level 3</button>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" id="backToMenuButton" class="secondary-button">Wróć do menu</button>
+        </div>
+      </section>
+    </dialog>
+
+    <dialog id="nameDialog">
+      <form id="nameForm" method="dialog">
+        <h2>Podaj nazwę gracza</h2>
+        <label for="playerName">Nazwa gracza</label>
+        <input id="playerName" type="text" maxlength="20" placeholder="Wpisz swoje imię" autocomplete="nickname" />
+        <p id="nameError" class="dialog-error" aria-live="polite"></p>
+        <div class="dialog-actions">
+          <button type="submit" value="start">Zagraj</button>
+          <button type="button" id="cancelNameButton" value="cancel" class="secondary-button">Anuluj</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="scoresDialog">
+      <section class="leaderboard" aria-labelledby="leaderboardTitle">
+        <h2 id="leaderboardTitle">Najlepsze wyniki</h2>
+        <ol id="leaderboardList"></ol>
+        <div class="dialog-actions">
+          <button type="button" id="closeScoresButton" class="secondary-button">Wróć do menu</button>
+        </div>
+      </section>
+    </dialog>
+    <script src="game.js"></script>
+  </body>
+</html>
